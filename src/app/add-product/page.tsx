@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/db/prisma";
+import { redirect } from "next/navigation";
 
 // import { metadata } from '../layout';
 export const metadata = {
@@ -20,6 +21,7 @@ async function addProduct(formData: formData) {
   await prisma.product.create({
     data: { name, description, imageUrl, price },
   });
+  redirect("/");
 }
 
 export default function AddProductPage() {
